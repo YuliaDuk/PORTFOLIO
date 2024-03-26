@@ -2,6 +2,7 @@ module.exports = {
   root: true,
   env: { browser: true, es2020: true },
   extends: [
+    "stylelint-config-prettier-scss",
     "plugin:react/recommended",
     "plugin:react/jsx-runtime",
     "plugin:import/typescript",
@@ -18,9 +19,16 @@ module.exports = {
   parser: '@typescript-eslint/parser',
   plugins: ["react", "@typescript-eslint", "simple-import-sort"],
   rules: {
+
+    "prettier/prettier": [
+      "error",
+      {
+        "endOfLine": "auto"
+      }
+    ],
+    "no-empty": "warn",
     "import/no-unresolved": 0,
-    "react/react-in-jsx-scope": "off",
-    "react/jsx-filename-extension": [1, { "extensions": [".js", ".jsx", ".ts", ".tsx"] }],
+    "@typescript-eslint/no-non-null-assertion": 1,
     "import/order": [
       "warn",
       {
@@ -56,10 +64,43 @@ module.exports = {
         }
       }
     ],
-    // 'react-refresh/only-export-components': [
-    //   'warn',
-    //   { allowConstantExport: true },
-    // ],
+    "@typescript-eslint/no-duplicate-imports": "off",
+    "@typescript-eslint/no-use-before-define": 0,
+    "@typescript-eslint/no-explicit-any": 0,
+    "@typescript-eslint/no-unused-vars": [
+      "warn",
+      {
+        "vars": "all",
+        "args": "none",
+        "argsIgnorePattern": "^_",
+        "varsIgnorePattern": "^_",
+        "caughtErrorsIgnorePattern": "^_"
+      }
+    ],
+    "@typescript-eslint/explicit-function-return-type": "off",
+    "@typescript-eslint/explicit-module-boundary-types": "off",
+    "@typescript-eslint/no-var-requires": "off",
+
+    "react/jsx-wrap-multilines": [
+      "error",
+      {
+        "declaration": "parens-new-line",
+        "assignment": "parens-new-line",
+        "return": "parens-new-line",
+        "arrow": "parens-new-line",
+        "condition": "parens-new-line",
+        "logical": "parens-new-line",
+        "prop": "ignore"
+      }
+    ],
+    "react/self-closing-comp": [
+      "error",
+      {
+        "component": true,
+        "html": true
+      }
+    ],
+    "react/jsx-key": "error"
   },
   settings: {
     "react": {
